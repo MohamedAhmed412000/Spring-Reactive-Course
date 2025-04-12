@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: webflux-course
+  sql:
+    init:
+      data-locations: classpath:sql/data.sql
+
+logging:
+  level:
+    org:
+      springframework:
+        r2dbc: debug
