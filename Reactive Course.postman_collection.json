@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "dcb6b2a7-d7ab-454d-8963-68f7c1ed3a5e",
+		"name": "Reactive Course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32902590"
+	},
+	"item": [
+		{
+			"name": "Reactive vs Traditional",
+			"item": [
+				{
+					"name": "traditional rest call",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/traditional/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"traditional",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "traditional rest call",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/traditional/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"traditional",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "474"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"description\": \"product-1\",\n        \"price\": 1\n    },\n    {\n        \"id\": \"2\",\n        \"description\": \"product-2\",\n        \"price\": 2\n    },\n    {\n        \"id\": \"3\",\n        \"description\": \"product-3\",\n        \"price\": 3\n    },\n    {\n        \"id\": \"4\",\n        \"description\": \"product-4\",\n        \"price\": 4\n    },\n    {\n        \"id\": \"5\",\n        \"description\": \"product-5\",\n        \"price\": 5\n    },\n    {\n        \"id\": \"6\",\n        \"description\": \"product-6\",\n        \"price\": 6\n    },\n    {\n        \"id\": \"7\",\n        \"description\": \"product-7\",\n        \"price\": 7\n    },\n    {\n        \"id\": \"8\",\n        \"description\": \"product-8\",\n        \"price\": 8\n    },\n    {\n        \"id\": \"9\",\n        \"description\": \"product-9\",\n        \"price\": 9\n    },\n    {\n        \"id\": \"10\",\n        \"description\": \"product-10\",\n        \"price\": 10\n    }\n]"
+						},
+						{
+							"name": "error in the service called",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/traditional/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"traditional",
+										"products"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "146"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2024-11-09T12:31:35.191+00:00\",\n    \"path\": \"/traditional/products\",\n    \"status\": 500,\n    \"error\": \"Internal Server Error\",\n    \"requestId\": \"ead470e5-1\"\n}"
+						}
+					]
+				},
+				{
+					"name": "reactive rest call",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reactive/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reactive",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "reactive rest call",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/reactive/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reactive",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"description\": \"product-1\",\n        \"price\": 1\n    },\n    {\n        \"id\": \"2\",\n        \"description\": \"product-2\",\n        \"price\": 2\n    },\n    {\n        \"id\": \"3\",\n        \"description\": \"product-3\",\n        \"price\": 3\n    },\n    {\n        \"id\": \"4\",\n        \"description\": \"product-4\",\n        \"price\": 4\n    },\n    {\n        \"id\": \"5\",\n        \"description\": \"product-5\",\n        \"price\": 5\n    },\n    {\n        \"id\": \"6\",\n        \"description\": \"product-6\",\n        \"price\": 6\n    },\n    {\n        \"id\": \"7\",\n        \"description\": \"product-7\",\n        \"price\": 7\n    },\n    {\n        \"id\": \"8\",\n        \"description\": \"product-8\",\n        \"price\": 8\n    },\n    {\n        \"id\": \"9\",\n        \"description\": \"product-9\",\n        \"price\": 9\n    },\n    {\n        \"id\": \"10\",\n        \"description\": \"product-10\",\n        \"price\": 10\n    }\n]"
+						},
+						{
+							"name": "error in the service called",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/reactive/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reactive",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"id\":\"1\",\"description\":\"product-1\",\"price\":1},{\"id\":\"2\",\"description\":\"product-2\",\"price\":2},{\"id\":\"3\",\"description\":\"product-3\",\"price\":3},{\"id\":\"4\",\"description\":\"product-4\",\"price\":4}"
+						},
+						{
+							"name": "error in the service called (but complete on error occured)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/reactive/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reactive",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"1\",\n        \"description\": \"product-1\",\n        \"price\": 1\n    },\n    {\n        \"id\": \"2\",\n        \"description\": \"product-2\",\n        \"price\": 2\n    },\n    {\n        \"id\": \"3\",\n        \"description\": \"product-3\",\n        \"price\": 3\n    },\n    {\n        \"id\": \"4\",\n        \"description\": \"product-4\",\n        \"price\": 4\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "reactive rest call stream",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reactive/products/stream",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reactive",
+								"products",
+								"stream"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "reactive rest call stream",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/reactive/products/stream",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"reactive",
+										"products",
+										"stream"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/event-stream;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "data:{\"id\":\"1\",\"description\":\"product-1\",\"price\":1}\n\ndata:{\"id\":\"2\",\"description\":\"product-2\",\"price\":2}\n\ndata:{\"id\":\"3\",\"description\":\"product-3\",\"price\":3}\n\ndata:{\"id\":\"4\",\"description\":\"product-4\",\"price\":4}\n\ndata:{\"id\":\"5\",\"description\":\"product-5\",\"price\":5}\n\ndata:{\"id\":\"6\",\"description\":\"product-6\",\"price\":6}\n\ndata:{\"id\":\"7\",\"description\":\"product-7\",\"price\":7}\n\ndata:{\"id\":\"8\",\"description\":\"product-8\",\"price\":8}\n\ndata:{\"id\":\"9\",\"description\":\"product-9\",\"price\":9}\n\ndata:{\"id\":\"10\",\"description\":\"product-10\",\"price\":10}\n\n"
+						}
+					]
+				}
+			]
+		}
+	]
+}
