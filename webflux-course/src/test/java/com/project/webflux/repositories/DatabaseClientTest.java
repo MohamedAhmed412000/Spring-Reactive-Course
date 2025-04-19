@@ -1,4 +1,4 @@
-package com.project.webflux;
+package com.project.webflux.repositories;
 
 import com.project.webflux.dto.OrderDetails;
 import lombok.extern.slf4j.Slf4j;

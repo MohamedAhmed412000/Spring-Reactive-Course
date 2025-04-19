@@ -1,7 +1,6 @@
-package com.project.webflux;
+package com.project.webflux.repositories;
 
 import com.project.webflux.models.Customer;
-import com.project.webflux.repositories.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

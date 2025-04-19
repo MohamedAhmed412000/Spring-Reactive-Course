@@ -1,4 +1,4 @@
-package com.project.webflux;
+package com.project.webflux.repositories;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
