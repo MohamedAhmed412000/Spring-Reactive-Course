@@ -1,9 +1,10 @@
 package com.project.webflux.controllers;
 
 import com.project.webflux.dto.CustomerDto;
+import com.project.webflux.exceptions.ApplicationExceptions;
 import com.project.webflux.services.CustomerService;
+import com.project.webflux.validators.RequestValidator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -29,39 +30,40 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    Mono<ResponseEntity<CustomerDto>> getCustomer(
+    Mono<CustomerDto> getCustomer(
         @PathVariable("id") Integer customerId
     ) {
         return this.customerService.getCustomer(customerId)
-            .map(ResponseEntity::ok)
-            .defaultIfEmpty(ResponseEntity.notFound().build());
+            .switchIfEmpty(ApplicationExceptions.customerNotFound(customerId));
     }
 
     @PostMapping
     Mono<CustomerDto> createCustomer(
         @RequestBody Mono<CustomerDto> customerDtoMono
     ) {
-        return this.customerService.saveCustomer(customerDtoMono);
+        return customerDtoMono.transform(RequestValidator.validateCustomer())
+            .as(this.customerService::saveCustomer);
     }
 
     @PutMapping("{id}")
-    Mono<ResponseEntity<CustomerDto>> updateCustomer(
+    Mono<CustomerDto> updateCustomer(
         @PathVariable("id") Integer customerId,
         @RequestBody Mono<CustomerDto> customerDtoMono
     ) {
-        return this.customerService.updateCustomer(customerId, customerDtoMono)
-            .map(ResponseEntity::ok)
-            .defaultIfEmpty(ResponseEntity.notFound().build());
+        return customerDtoMono.transform(RequestValidator.validateCustomer())
+            .as(validatedCustomerDtoMono -> this.customerService
+                .updateCustomer(customerId, validatedCustomerDtoMono))
+            .switchIfEmpty(ApplicationExceptions.customerNotFound(customerId));
     }
 
     @DeleteMapping("{id}")
-    Mono<ResponseEntity<Void>> deleteCustomer(
+    Mono<Void> deleteCustomer(
         @PathVariable("id") Integer customerId
     ) {
         return this.customerService.deleteCustomer(customerId)
             .filter(isDeleted -> isDeleted)
-            .map(isDeleted -> ResponseEntity.ok().<Void>build())
-            .defaultIfEmpty(ResponseEntity.notFound().build());
+            .switchIfEmpty(ApplicationExceptions.customerNotFound(customerId))
+            .then();
     }
 
 

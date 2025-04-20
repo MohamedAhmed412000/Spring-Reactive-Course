@@ -1,4 +1,4 @@
-package com.project.webflux.services;
+package com.project.webflux.integration;
 
 import com.project.webflux.dto.CustomerDto;
 import lombok.extern.slf4j.Slf4j;
@@ -102,20 +102,40 @@ public class CustomerServiceTest {
     }
 
     @Test
+    public void InvalidRequest() {
+        CustomerDto customerDto = new CustomerDto(null, null, "mohamed");
+        this.webTestClient.post()
+            .uri("/customers")
+            .bodyValue(customerDto)
+            .exchange()
+            .expectStatus().isBadRequest()
+            .expectHeader().contentType(MediaType.APPLICATION_PROBLEM_JSON)
+            .expectBody()
+            .jsonPath("$.status").isEqualTo(400)
+            .jsonPath("$.title").isEqualTo("Invalid Input");
+    }
+
+    @Test
     public void customerNotFound() {
         // get
         this.webTestClient.get()
             .uri("/customers/20")
             .exchange()
             .expectStatus().isNotFound()
-            .expectBody().isEmpty();
+            .expectHeader().contentType(MediaType.APPLICATION_PROBLEM_JSON)
+            .expectBody()
+            .jsonPath("$.status").isEqualTo(404)
+            .jsonPath("$.title").isEqualTo("Customer Not Found");
 
         // delete
         this.webTestClient.delete()
             .uri("/customers/20")
             .exchange()
             .expectStatus().isNotFound()
-            .expectBody().isEmpty();
+            .expectHeader().contentType(MediaType.APPLICATION_PROBLEM_JSON)
+            .expectBody()
+            .jsonPath("$.status").isEqualTo(404)
+            .jsonPath("$.title").isEqualTo("Customer Not Found");
 
         // update
         CustomerDto customerDto = new CustomerDto(null, "mohamed", "mohamed@example.com");
@@ -124,7 +144,10 @@ public class CustomerServiceTest {
             .bodyValue(customerDto)
             .exchange()
             .expectStatus().isNotFound()
-            .expectBody().isEmpty();
+            .expectHeader().contentType(MediaType.APPLICATION_PROBLEM_JSON)
+            .expectBody()
+            .jsonPath("$.status").isEqualTo(404)
+            .jsonPath("$.title").isEqualTo("Customer Not Found");
     }
 
 }
