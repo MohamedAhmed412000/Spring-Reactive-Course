@@ -1,6 +1,7 @@
 package com.project.webflux.controllers;
 
 import com.project.webflux.dto.CustomerDto;
+import com.project.webflux.enums.AuthorizationTypesEnum;
 import com.project.webflux.exceptions.ApplicationExceptions;
 import com.project.webflux.services.CustomerService;
 import com.project.webflux.validators.RequestValidator;
@@ -17,7 +18,10 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping
-    Flux<CustomerDto> getAllCustomers() {
+    Flux<CustomerDto> getAllCustomers(
+        @RequestAttribute("userType") AuthorizationTypesEnum userType
+    ) {
+        System.out.println(userType);
         return this.customerService.getAllCustomers();
     }
 

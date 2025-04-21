@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
@@ -16,6 +17,9 @@ import java.util.Objects;
 @SpringBootTest(properties = "logging.level.org.springframework.r2dbc=debug")
 public class CustomerServiceTest {
 
+    private static final String STANDARD_VALUE = "secret123";
+    private static final String PREMIUM_VALUE = "secret456";
+
     @Autowired
     private WebTestClient webTestClient;
 
@@ -23,6 +27,7 @@ public class CustomerServiceTest {
     public void getAllCustomers() {
         this.webTestClient.get()
             .uri("/customers")
+            .header(HttpHeaders.AUTHORIZATION, STANDARD_VALUE)
             .exchange()
             .expectStatus().is2xxSuccessful()
             .expectHeader().contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -35,6 +40,7 @@ public class CustomerServiceTest {
     public void getPaginatedCustomers() {
         this.webTestClient.get()
             .uri("/customers/paginated")
+            .header(HttpHeaders.AUTHORIZATION, STANDARD_VALUE)
             .exchange()
             .expectStatus().is2xxSuccessful()
             .expectHeader().contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -50,6 +56,7 @@ public class CustomerServiceTest {
     public void getCustomerById() {
         this.webTestClient.get()
             .uri("/customers/1")
+            .header(HttpHeaders.AUTHORIZATION, STANDARD_VALUE)
             .exchange()
             .expectStatus().is2xxSuccessful()
             .expectHeader().contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -66,6 +73,7 @@ public class CustomerServiceTest {
         CustomerDto customerDto = new CustomerDto(null, "mohamed", "mohamed@example.com");
         this.webTestClient.post()
             .uri("/customers")
+            .header(HttpHeaders.AUTHORIZATION, PREMIUM_VALUE)
             .bodyValue(customerDto)
             .exchange()
             .expectStatus().is2xxSuccessful()
@@ -79,6 +87,7 @@ public class CustomerServiceTest {
 
         this.webTestClient.delete()
             .uri("/customers/11")
+            .header(HttpHeaders.AUTHORIZATION, PREMIUM_VALUE)
             .exchange()
             .expectStatus().is2xxSuccessful()
             .expectBody().isEmpty();
@@ -89,6 +98,7 @@ public class CustomerServiceTest {
         CustomerDto customerDto = new CustomerDto(null, "mohamed", "mohamed@example.com");
         this.webTestClient.put()
             .uri("/customers/10")
+            .header(HttpHeaders.AUTHORIZATION, PREMIUM_VALUE)
             .bodyValue(customerDto)
             .exchange()
             .expectStatus().is2xxSuccessful()
@@ -106,6 +116,7 @@ public class CustomerServiceTest {
         CustomerDto customerDto = new CustomerDto(null, null, "mohamed");
         this.webTestClient.post()
             .uri("/customers")
+            .header(HttpHeaders.AUTHORIZATION, PREMIUM_VALUE)
             .bodyValue(customerDto)
             .exchange()
             .expectStatus().isBadRequest()
@@ -120,6 +131,7 @@ public class CustomerServiceTest {
         // get
         this.webTestClient.get()
             .uri("/customers/20")
+            .header(HttpHeaders.AUTHORIZATION, STANDARD_VALUE)
             .exchange()
             .expectStatus().isNotFound()
             .expectHeader().contentType(MediaType.APPLICATION_PROBLEM_JSON)
@@ -130,6 +142,7 @@ public class CustomerServiceTest {
         // delete
         this.webTestClient.delete()
             .uri("/customers/20")
+            .header(HttpHeaders.AUTHORIZATION, PREMIUM_VALUE)
             .exchange()
             .expectStatus().isNotFound()
             .expectHeader().contentType(MediaType.APPLICATION_PROBLEM_JSON)
@@ -141,6 +154,7 @@ public class CustomerServiceTest {
         CustomerDto customerDto = new CustomerDto(null, "mohamed", "mohamed@example.com");
         this.webTestClient.put()
             .uri("/customers/20")
+            .header(HttpHeaders.AUTHORIZATION, PREMIUM_VALUE)
             .bodyValue(customerDto)
             .exchange()
             .expectStatus().isNotFound()
