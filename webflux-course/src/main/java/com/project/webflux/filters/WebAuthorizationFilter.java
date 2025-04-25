@@ -15,12 +15,13 @@ import reactor.core.publisher.Mono;
 public class WebAuthorizationFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        AuthorizationTypesEnum authType = (AuthorizationTypesEnum) exchange.getRequest().getAttributes()
-            .getOrDefault("userType", AuthorizationTypesEnum.STANDARD);
-        return switch (authType) {
-            case STANDARD -> filterStandard(exchange, chain);
-            case PREMIUM -> chain.filter(exchange);
-        };
+//        AuthorizationTypesEnum authType = (AuthorizationTypesEnum) exchange.getRequest().getAttributes()
+//            .getOrDefault("userType", AuthorizationTypesEnum.STANDARD);
+//        return switch (authType) {
+//            case STANDARD -> filterStandard(exchange, chain);
+//            case PREMIUM -> chain.filter(exchange);
+//        };
+        return chain.filter(exchange);
     }
 
     private Mono<Void> filterStandard(ServerWebExchange exchange, WebFilterChain chain) {

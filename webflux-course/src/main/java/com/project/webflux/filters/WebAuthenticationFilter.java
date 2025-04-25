@@ -17,15 +17,16 @@ public class WebAuthenticationFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        String authorization = exchange.getRequest().getHeaders().getFirst("Authorization");
-        if (Objects.nonNull(authorization)) {
-            AuthorizationTypesEnum userType = AuthorizationTypesEnum.fromValue(authorization);
-            if (Objects.nonNull(userType)) {
-                exchange.getAttributes().put("userType", userType);
-                return chain.filter(exchange);
-            }
-        }
-        return Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED));
+//        String authorization = exchange.getRequest().getHeaders().getFirst("Authorization");
+//        if (Objects.nonNull(authorization)) {
+//            AuthorizationTypesEnum userType = AuthorizationTypesEnum.fromValue(authorization);
+//            if (Objects.nonNull(userType)) {
+//                exchange.getAttributes().put("userType", userType);
+//                return chain.filter(exchange);
+//            }
+//        }
+//        return Mono.fromRunnable(() -> exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED));
+        return chain.filter(exchange);
     }
 
 }

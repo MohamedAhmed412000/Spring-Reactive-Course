@@ -20,6 +20,20 @@ public class ProductController {
 
     private final ProductService productService;
 
+    @PostMapping
+    public Mono<ProductDto> createProduct(@RequestBody Mono<ProductDto> productDtoMono) {
+        return productService.saveProduct(productDtoMono);
+    }
+
+    @GetMapping(path = "/stream/{max-price}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<ProductDto> streamProducts(
+        @PathVariable("max-price") Integer maxPrice
+    ) {
+        return productService.getProductStream()
+            .filter(productDto -> productDto.price() <= maxPrice);
+    }
+
+
     @PostMapping(path = "/upload", consumes = MediaType.APPLICATION_NDJSON_VALUE)
     public Mono<UploadResponse> upload(@RequestBody Flux<ProductDto> productsFlux) {
         log.info("Uploading product data");
