@@ -15,7 +15,7 @@ import java.util.Objects;
 @Slf4j
 @AutoConfigureWebTestClient
 @SpringBootTest(properties = "logging.level.org.springframework.r2dbc=debug")
-public class CustomerServiceTest {
+public class CustomerClientTest {
 
     private static final String STANDARD_VALUE = "secret123";
     private static final String PREMIUM_VALUE = "secret456";
