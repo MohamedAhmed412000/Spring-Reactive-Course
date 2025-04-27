@@ -279,6 +279,841 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "fetch all customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "secret456",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{customer-url}}/customers",
+							"host": [
+								"{{customer-url}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{customer-url}}/customers",
+									"host": [
+										"{{customer-url}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"sam\",\n        \"email\": \"sam@gmail.com\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"mike\",\n        \"email\": \"mike@gmail.com\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"jake\",\n        \"email\": \"jake@gmail.com\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"emily\",\n        \"email\": \"emily@example.com\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"sophia\",\n        \"email\": \"sophia@example.com\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"liam\",\n        \"email\": \"liam@example.com\"\n    },\n    {\n        \"id\": 7,\n        \"name\": \"olivia\",\n        \"email\": \"olivia@example.com\"\n    },\n    {\n        \"id\": 8,\n        \"name\": \"noah\",\n        \"email\": \"noah@example.com\"\n    },\n    {\n        \"id\": 9,\n        \"name\": \"ava\",\n        \"email\": \"ava@example.com\"\n    },\n    {\n        \"id\": 10,\n        \"name\": \"ethan\",\n        \"email\": \"ethan@example.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "fetch all customers paginated",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "secret123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{customer-url}}/customers/paginated?page=2&size=5",
+							"host": [
+								"{{customer-url}}"
+							],
+							"path": [
+								"customers",
+								"paginated"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{customer-url}}/customers/paginated?page=2&size=5",
+									"host": [
+										"{{customer-url}}"
+									],
+									"path": [
+										"customers",
+										"paginated"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 6,\n        \"name\": \"liam\",\n        \"email\": \"liam@example.com\"\n    },\n    {\n        \"id\": 7,\n        \"name\": \"olivia\",\n        \"email\": \"olivia@example.com\"\n    },\n    {\n        \"id\": 8,\n        \"name\": \"noah\",\n        \"email\": \"noah@example.com\"\n    },\n    {\n        \"id\": 9,\n        \"name\": \"ava\",\n        \"email\": \"ava@example.com\"\n    },\n    {\n        \"id\": 10,\n        \"name\": \"ethan\",\n        \"email\": \"ethan@example.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "fetch customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "secret123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{customer-url}}/customers/:id",
+							"host": [
+								"{{customer-url}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{customerId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{customer-url}}/customers/:id",
+									"host": [
+										"{{customer-url}}"
+									],
+									"path": [
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{customerId}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"name\": \"Pablo Lebsack\",\n    \"email\": \"Austyn.Metz46@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "create customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonResponse = pm.response.text();\r",
+									"pm.collectionVariables.set(\"customerId\", jsonResponse.id);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "secret456",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{customer-url}}/customers",
+							"host": [
+								"{{customer-url}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{customer-url}}/customers",
+									"host": [
+										"{{customer-url}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"name\": \"Pablo Lebsack\",\n    \"email\": \"Austyn.Metz46@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{customer-url}}/customers/:id",
+							"host": [
+								"{{customer-url}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{customerId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{customer-url}}/customers/:id",
+									"host": [
+										"{{customer-url}}"
+									],
+									"path": [
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{customerId}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"name\": \"Kristina Nikolaus\",\n    \"email\": \"Joan86@hotmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{customer-url}}/customers/:id",
+							"host": [
+								"{{customer-url}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{customerId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{customer-url}}/customers/:id",
+									"host": [
+										"{{customer-url}}"
+									],
+									"path": [
+										"customers",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{customerId}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "content-length",
+									"value": "0"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "create new product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Phone\",\r\n    \"price\": 800\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{product-url}}/products",
+							"host": [
+								"{{product-url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"Phone\",\r\n    \"price\": 800\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{product-url}}/products",
+									"host": [
+										"{{product-url}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 12,\n    \"description\": \"Phone\",\n    \"price\": 800\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "get customer information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway-url}}/customers/1",
+							"host": [
+								"{{gateway-url}}"
+							],
+							"path": [
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/customers/1",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Mohamed\",\n    \"balance\": 10000,\n    \"holdings\": []\n}"
+						},
+						{
+							"name": "customer not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/customers/111",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"customers",
+										"111"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "169"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"http://example.com/problems/customer-not-found\",\n    \"title\": \"Customer Not Found\",\n    \"status\": 404,\n    \"detail\": \"Customer [id=111] is not found\",\n    \"instance\": \"/customers/111\"\n}"
+						}
+					]
+				},
+				{
+					"name": "buy stock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ticker\": \"GOOGLE\",\r\n    \"quantity\": 2,\r\n    \"action\": \"BUY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-url}}/customers/1/trade",
+							"host": [
+								"{{gateway-url}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"trade"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ticker\": \"GOOGLE\",\r\n    \"quantity\": 2,\r\n    \"action\": \"BUY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/customers/1/trade",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"customers",
+										"1",
+										"trade"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"customerId\": 1,\n    \"ticker\": \"GOOGLE\",\n    \"price\": 110,\n    \"quantity\": 2,\n    \"action\": \"BUY\",\n    \"totalPrice\": 220,\n    \"balance\": 9780\n}"
+						},
+						{
+							"name": "haven't enough money",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ticker\": \"GOOGLE\",\r\n    \"quantity\": 150,\r\n    \"action\": \"BUY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/customers/1/trade",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"customers",
+										"1",
+										"trade"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "220"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"http://example.com/problems/invalid-trade-request\",\n    \"title\": \"Invalid Trade Request\",\n    \"status\": 400,\n    \"detail\": \"Customer [id=1] doesn't have sufficient balance to complete transaction\",\n    \"instance\": \"/customers/1/trade\"\n}"
+						}
+					]
+				},
+				{
+					"name": "sell shares",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ticker\": \"GOOGLE\",\r\n    \"quantity\": 1,\r\n    \"action\": \"SELL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway-url}}/customers/1/trade",
+							"host": [
+								"{{gateway-url}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"trade"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ticker\": \"GOOGLE\",\r\n    \"quantity\": 1,\r\n    \"action\": \"SELL\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/customers/1/trade",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"customers",
+										"1",
+										"trade"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"customerId\": 1,\n    \"ticker\": \"GOOGLE\",\n    \"price\": 154,\n    \"quantity\": 1,\n    \"action\": \"SELL\",\n    \"totalPrice\": 154,\n    \"balance\": 9846\n}"
+						},
+						{
+							"name": "haven't enough shares",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ticker\": \"GOOGLE\",\r\n    \"quantity\": 111,\r\n    \"action\": \"SELL\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/customers/1/trade",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"customers",
+										"1",
+										"trade"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "215"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"http://example.com/problems/invalid-trade-request\",\n    \"title\": \"Invalid Trade Request\",\n    \"status\": 400,\n    \"detail\": \"Customer [id=1] doesn't have enough shares to complete transaction\",\n    \"instance\": \"/customers/1/trade\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "customer-url",
+			"value": "http://localhost:8080",
+			"type": "default"
+		},
+		{
+			"key": "customerId",
+			"value": ""
+		},
+		{
+			"key": "product-url",
+			"value": "http://localhost:8080",
+			"type": "default"
 		}
 	]
 }
