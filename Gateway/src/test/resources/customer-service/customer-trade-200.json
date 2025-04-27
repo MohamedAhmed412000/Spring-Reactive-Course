@@ -1,0 +1,9 @@
+{
+  "customerId": 1,
+  "ticker": "GOOGLE",
+  "price": 150,
+  "quantity": 2,
+  "action": "BUY",
+  "totalPrice": 300,
+  "balance": 9700
+}

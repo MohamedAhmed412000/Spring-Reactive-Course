@@ -25,7 +25,8 @@ public class StockServiceClient {
         return this.webClient.get()
             .uri("/stock/{ticker}", ticker)
             .accept(MediaType.APPLICATION_JSON)
-            .exchangeToMono(response -> response.bodyToMono(StockPriceResponse.class));
+            .retrieve()
+            .bodyToMono(StockPriceResponse.class);
     }
 
     public Flux<PriceUpdate> getPriceUpdates() {
@@ -39,7 +40,8 @@ public class StockServiceClient {
         return this.webClient.get()
             .uri("/stock/price-stream")
             .accept(MediaType.APPLICATION_NDJSON)
-            .exchangeToFlux(response -> response.bodyToFlux(PriceUpdate.class))
+            .retrieve()
+            .bodyToFlux(PriceUpdate.class)
             .retryWhen(retry())
             .cache(1);
     }

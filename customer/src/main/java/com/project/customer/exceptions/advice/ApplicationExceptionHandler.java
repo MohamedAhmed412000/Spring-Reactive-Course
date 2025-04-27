@@ -23,7 +23,7 @@ public class ApplicationExceptionHandler {
 
     @ExceptionHandler(InsufficientBalanceException.class)
     public ProblemDetail handleInsufficientBalanceException(InsufficientBalanceException ex) {
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, ex.getMessage());
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
         problemDetail.setType(URI.create("http://example.com/problems/insufficient-balance"));
         problemDetail.setTitle("Customer doesn't have sufficient balance for the transaction");
         return problemDetail;
@@ -31,7 +31,7 @@ public class ApplicationExceptionHandler {
 
     @ExceptionHandler(InsufficientSharesException.class)
     public ProblemDetail handleInsufficientSharesException(InsufficientSharesException ex) {
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, ex.getMessage());
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
         problemDetail.setType(URI.create("http://example.com/problems/insufficient-shares"));
         problemDetail.setTitle("Customer doesn't have sufficient shares for the transaction");
         return problemDetail;

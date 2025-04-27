@@ -24,7 +24,8 @@ public class CustomerServiceClient {
         return this.webClient.get()
             .uri("/customers/{customer-id}", customerId)
             .accept(MediaType.APPLICATION_JSON)
-            .exchangeToMono(response -> response.bodyToMono(CustomerInformation.class))
+            .retrieve()
+            .bodyToMono(CustomerInformation.class)
             .onErrorResume(WebClientResponseException.NotFound.class,
                 ex -> ApplicationExceptions.customerNotFound(customerId));
     }
@@ -35,13 +36,14 @@ public class CustomerServiceClient {
             .contentType(MediaType.APPLICATION_JSON)
             .bodyValue(request)
             .accept(MediaType.APPLICATION_JSON)
-            .exchangeToMono(response -> response.bodyToMono(StockTradeResponse.class))
+            .retrieve()
+            .bodyToMono(StockTradeResponse.class)
             .onErrorResume(WebClientResponseException.NotFound.class,
                 ex -> ApplicationExceptions.customerNotFound(customerId))
-            .onErrorResume(WebClientResponseException.Forbidden.class, this::handleException);
+            .onErrorResume(WebClientResponseException.BadRequest.class, this::handleException);
     }
 
-    private <T> Mono<T> handleException(WebClientResponseException.Forbidden exception) {
+    private <T> Mono<T> handleException(WebClientResponseException.BadRequest exception) {
         ProblemDetail problemDetail = exception.getResponseBodyAs(ProblemDetail.class);
         String message = Objects.isNull(problemDetail)? exception.getMessage() : problemDetail.getDetail();
         log.error("Error occurred while processing request: {} ", message);
