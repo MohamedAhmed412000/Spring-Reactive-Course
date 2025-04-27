@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/webflux-course/pom.xml" />
         <option value="$PROJECT_DIR$/customer/pom.xml" />
+        <option value="$PROJECT_DIR$/Gateway/pom.xml" />
       </list>
     </option>
   </component>

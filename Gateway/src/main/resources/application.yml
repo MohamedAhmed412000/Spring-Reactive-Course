@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: Gateway
+
+customer:
+  service:
+    url: http://localhost:8091
+
+stock:
+  service:
+    url: http://localhost:7070

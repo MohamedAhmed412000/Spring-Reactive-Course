@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "stock.service.url",
+      "type": "java.lang.String",
+      "description": "Stock service base url."
+    },
+    {
+      "name": "customer.service.url",
+      "type": "java.lang.String",
+      "description": "Customer service base url."
+    }
+  ] }
